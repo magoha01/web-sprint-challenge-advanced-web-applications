@@ -1,12 +1,81 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
+
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Login = () => {
+
+    const initialState= {
+        credentials: {
+            username: 'Lambda',
+            password: 'School',
+          }
+    }
+
+    const[error, setError] = useState('')
+    const { push } = useHistory();
+    const [state, setState]= useState(initialState)
     
+    const handleChange = e => {
+        setState({
+          credentials: {
+            ...state.credentials,
+            [e.target.name]: e.target.value
+          }
+        });
+      };
+
+      const login = e => {
+        e.preventDefault();
+            if (state.credentials.username === "" || state.credentials.password === "") {
+        
+                setError('Error: username and password required.');
+                
+            } else if (state.credentials.username !== "Lambda" || state.credentials.password !== "School"){
+                
+                setError('Login Failed: incorrect username and/or password.');   
+
+            } else {
+                axios.post('http://localhost:5000/api/login', state.credentials)
+            .then(resp=> {
+                localStorage.setItem("token", resp.data.token);
+                push('/view');
+            })
+            .catch(err=> {
+                console.log(err);
+            });
+        }
+       
+      };
+
+    
+
     return(<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
+            <div>
+                    <form onSubmit={login}>
+                    <input
+                        id="username"
+                        type="text"
+                        name="username"
+                        value={state.credentials.username}
+                        onChange={handleChange}
+                    />
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        value={state.credentials.password}
+                        onChange={handleChange}
+                    />
+                     <p id="error">{error}</p> 
+                    <button id="submit">Login</button>
+                    </form>
+
+                </div>
         </ModalContainer>
     </ComponentContainer>);
 }

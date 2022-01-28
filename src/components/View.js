@@ -26,8 +26,6 @@ const View = (props) => {
     }, [])
 
     const handleDelete = (id) => {
-
-
         axiosWithAuth()
         .delete(`/articles/${id}`)
         .then(resp=> {
@@ -39,6 +37,16 @@ const View = (props) => {
     }
 
     const handleEdit = (article) => {
+        axiosWithAuth()
+        .put(`/articles/${editId}`, article)
+            .then(res=>{
+                setArticles(res.data);
+                setEditing(false)
+                push(`/view`);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
     }
 
     const handleEditSelect = (id)=> {

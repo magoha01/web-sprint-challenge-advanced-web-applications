@@ -44,7 +44,7 @@ const View = (props) => {
         setEditing(true);
         setEditId(id);
     }
-
+           
     const handleEditCancel = ()=>{
         setEditing(false);
     }

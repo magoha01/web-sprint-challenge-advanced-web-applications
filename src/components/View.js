@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import Article from './Article';
 import EditForm from './EditForm';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import axios from 'axios';
+
 
 const View = (props) => {
     const [articles, setArticles] = useState([]);
@@ -32,7 +32,6 @@ const View = (props) => {
         .delete(`/articles/${id}`)
         .then(resp=> {
                 setArticles(articles.filter(article =>(article.id !== id)))
-                //push('/view')
         })
         .catch(err=> {
           console.log(err);

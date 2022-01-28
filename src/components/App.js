@@ -11,6 +11,7 @@ import View from './View';
 
 const App = () => {
 
+  
 
   return (
     <AppContainer>
@@ -21,8 +22,8 @@ const App = () => {
           <Switch>
 
             <Route exact path="/login" component={Login}/>
-            <PrivateRoute exact path="/view" component={View}/>
-            <PrivateRoute exact path="/logout" component={Logout}/>
+            <PrivateRoute exact path="/view" component={View} />
+            <PrivateRoute exact path="/logout" component={Logout} />
             <Route exact path="/" component={Login}/>
 
           </Switch>      

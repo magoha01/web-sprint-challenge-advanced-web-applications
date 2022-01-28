@@ -25,16 +25,7 @@ const View = (props) => {
     }, [])
 
     const handleDelete = (id) => {
-        axiosWithAuth()
-        .delete(`/articles/${id}`)
-        .then(resp => {
-            console.log('deleting:', resp)
-            // delete(resp.data);
-            // push('/view')
-        })
-        .catch( err => {
-            console.log(err);
-        })
+        setArticles(articles.filter(article =>(article.id !== id)))
     }
 
     const handleEdit = (article) => {

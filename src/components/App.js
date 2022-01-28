@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from "react-router-dom";
 import styled from 'styled-components';
 
+import PrivateRoute from './PrivateRoute';
 import Header from './Header';
 import BloomHeader from './BloomHeader';
 import Login from './Login';
@@ -22,13 +23,13 @@ const App = () => {
           <Login />
         </Route> 
 
-        <Route exact path="/view">
+        <PrivateRoute exact path="/view">
           <View/>
-        </Route> 
+        </PrivateRoute> 
 
-        <Route exact path="/logout">
+        <PrivateRoute exact path="/logout">
           <Logout/>
-        </Route> 
+        </PrivateRoute> 
                 
       </RouteContainer>
     </AppContainer>

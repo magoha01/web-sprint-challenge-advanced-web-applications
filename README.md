@@ -84,7 +84,7 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 * [X] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
 
-* [ ] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
+* [X] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
 
 
 ### Logout Authentication
@@ -118,10 +118,19 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain what a token is used for.
 
-    A token is used in order to 
+    A token is a string kept in client side local storage that allows a user access to protected resources that require authentication.
 
 2. What steps can you take in your web apps to keep your data secure?
 
+    You can add protected routes to your components, you can use tokens for authorization to protect private resources, require login forms with specifications for the login info (ex. length, use of certain characters, case, etc.)
+
 3. Describe how web servers work.
 
+    web servers refer to either a computer that stores the code for a website or a program that runs on  a computer. Web servers host the code for different websites,which gets shared when we load the code for our websites, in which our locates a specific server computer through a URL and domain name, and retrieves the needed info or resource from that server.
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+    Create: axios.get
+    Read: axios.post
+    Update: axios.put
+    Delete: axios.delete
